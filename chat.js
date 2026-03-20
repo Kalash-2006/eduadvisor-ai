@@ -281,15 +281,15 @@ async function submitAnalysis() {
   // Step 2 — Show spinner while fetching
   const spinner = appendSpinner();
 
-  try {
+   try {
     const query = `marks: ${collected.marks}, attendance: ${collected.attendance}, study_hours: ${collected.study_hours}, assignments: ${collected.assignments}`;
-    const res = await fetch('/chat', {
+    const res = await fetch('https://eduadvisor-ai.onrender.com/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: query })
     });
     const data = await res.json();
-    spinner.remove();
+    spinner.remove(); 
 
     await sleep(300);
     appendResult(data, studentName);
